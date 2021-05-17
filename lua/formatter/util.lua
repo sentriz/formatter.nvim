@@ -5,34 +5,20 @@ local util = {}
 
 -- Print to cmd line, always
 function util.print(msg)
-  local txt = string.format("Formatter: %s", msg)
-  vim.api.nvim_out_write(txt .. "\n")
 end
 
 -- Always print error message to cmd line
 function util.err(msg)
-  local txt = string.format("Formatter: %s", msg)
-  vim.api.nvim_err_writeln(txt)
 end
 
 -- Generic logging
 function util.log(...)
-  if loggingEnabled then
-    vim.api.nvim_out_write(table.concat(vim.tbl_flatten {...}) .. "\n")
-  end
 end
 
 function util.inspect(val)
-  if loggingEnabled then
-    print(vim.inspect(val))
-  end
 end
 
 function util.error(...)
-  if loggingEnabled then
-    print(table.concat(...))
-    vim.api.nvim_error_write(table.concat(vim.tbl_flatten {...}) .. "\n")
-  end
 end
 
 function util.setLines(bufnr, startLine, endLine, lines)
